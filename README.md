@@ -8,3 +8,7 @@ The Expectations from your project to score well are as follows:
 -Methods, Variable names, and Design patterns usage
 -JAVAFX(Optional)
 -Report with Introduction, UML diagrams, Test result, Conclusion, and very Important Source codes.
+
+#Running the program
+
+To run the program you currently need to call the UserInterface file located in src/application/UserInterface.java
