@@ -125,7 +125,7 @@ class Playlist
 class SongPlayer
 {
     static List<Song> playlist;
-    private static int currentSongIndex;
+    static int currentSongIndex;
     static boolean isPlaying;
     private static Song currentSong;
 

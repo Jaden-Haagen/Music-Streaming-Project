@@ -8,17 +8,13 @@ package application;
  * from account class and the add to playlist function from the interface
  */
 public class PaidUser extends account implements user{
-
+	//default constructor for PaidUser
 	public PaidUser() {
 		super("", true);
 	}
 	//this method sets the username
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	@Override
-	public void skip() {
 	}
 	
 	//this will turn your subscription into a freetype
