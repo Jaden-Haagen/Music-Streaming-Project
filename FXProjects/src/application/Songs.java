@@ -123,6 +123,7 @@ class SongPlayer
     static List<Song> playlist;
     private static int currentSongIndex;
     static boolean isPlaying;
+    private Song currentSong;
 
     public SongPlayer() 
     {
@@ -130,13 +131,25 @@ class SongPlayer
         SongPlayer.currentSongIndex = 0;
     }
 
+    public Song getCurrentSong() 
+    {
+        if (isPlaying) 
+        {
+            return currentSong;
+        } 
+        else 
+        {
+            System.out.println("No song is currently playing.");
+            return null;
+        }
+    }
     //This will play the song
     public static void play(Song song)
     {
         isPlaying = true;
         System.out.println("Now playing: " + song);
     }
-
+    
     //This will pause the song
     public static void pause() 
     {
