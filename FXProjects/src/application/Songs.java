@@ -11,7 +11,11 @@ class Song
     private String artist;
     private String genre;
     private int duration;
-
+    
+    public Song() {
+    	
+    }
+    
     public Song(String title, String artist, String genre, int duration) 
     {
         this.title = title;
@@ -123,15 +127,15 @@ class SongPlayer
     static List<Song> playlist;
     private static int currentSongIndex;
     static boolean isPlaying;
-    private Song currentSong;
+    private static Song currentSong;
 
     public SongPlayer() 
     {
         SongPlayer.playlist = new ArrayList<>(); // Using ArrayList to allow modifications
         SongPlayer.currentSongIndex = 0;
     }
-
-    public Song getCurrentSong() 
+    
+    public static Song getCurrentSong() 
     {
         if (isPlaying) 
         {
@@ -143,13 +147,14 @@ class SongPlayer
             return null;
         }
     }
+
     //This will play the song
     public static void play(Song song)
     {
         isPlaying = true;
         System.out.println("Now playing: " + song);
     }
-    
+
     //This will pause the song
     public static void pause() 
     {

@@ -24,6 +24,8 @@ public class UserInterface extends Application{
 	//Text variables
 	Text subT = new Text();
 	Text songT = new Text();
+	Song s1 = new Song();
+	
 	//String nameSong;
 	//Variables for scene, column, and row sizes
 	int WINDOWSIZE = 400;
@@ -78,7 +80,6 @@ public class UserInterface extends Application{
 	    r3.setPercentHeight(ROWPERCENT);
 	    
 	    //Layout for the main page
-		//layoutM.setMaxSize(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE);
 	    GridPane layoutM = new GridPane();
 	    //adds elements to specific spots in the grid
 	    layoutM.add(welcomeT, 1, 0, 2, 1);
@@ -95,6 +96,7 @@ public class UserInterface extends Application{
 		//Layout for the music player page
 		GridPane layoutS = new GridPane();
 		//adds elements to specific spots in the grid
+		layoutS.add(songT, 1, 1, 2, 1);
 		layoutS.add(mainMenuSB, 0, 0);
 		layoutS.add(skipBB, 0, 3);
 		layoutS.add(playPauseB, 1, 3);
@@ -156,6 +158,7 @@ public class UserInterface extends Application{
 		musicB.setOnAction(e -> {
 			window.setScene(playSongs);
 			Songs.main(null);
+			songT.setText("");
 		});
 		
 		//Button for returning to the main menu
@@ -172,12 +175,15 @@ public class UserInterface extends Application{
 		playPauseB = new Button("Play/Pause");
 		playPauseB.setMaxWidth(Double.MAX_VALUE);
 		//Sets the functions to be called when the button is pressed
+		
 		playPauseB.setOnAction(e -> {
 			if(SongPlayer.isPlaying) {
 				SongPlayer.pause();
-				//nameSong = Playlist.getName();
+				s1 = SongPlayer.getCurrentSong();
+				songT.setText("");
 			}else {
-				SongPlayer.play(null);
+				SongPlayer.play(s1);
+				songT.setText("");
 			}
 		});
 		skipFB = new Button(">|");
@@ -185,12 +191,14 @@ public class UserInterface extends Application{
 		//Sets the functions to be called when the button is pressed
 		skipFB.setOnAction(e -> {
 			SongPlayer.skipf();
+			songT.setText("");
 		});
 		skipBB = new Button("|<");
 		skipBB.setMaxWidth(Double.MAX_VALUE);
 		//Sets the functions to be called when the button is pressed
 		skipBB.setOnAction(e -> {
 			SongPlayer.skipb();
+			songT.setText("");
 		});
 		
 		//Buttons for profile page
