@@ -178,22 +178,19 @@ class SongPlayer
     //This will skip backwards
     public void skipb() 
     {
-        if (!playlist.isEmpty()) 
-        {
+    	if (!playlist.isEmpty()) 
+    	{
             if (isPlaying) 
             {
-                System.out.println("Skipping: " + playlist.get(currentSongIndex));
-                currentSongIndex = (currentSongIndex - 1) % playlist.size();
+                currentSongIndex = (currentSongIndex - 1 + playlist.size()) % playlist.size();
                 play(playlist.get(currentSongIndex));
             } 
             else 
             {
-                System.out.println("Not currently playing. Cannot skip.");
+                System.out.println("Not currently playing. Cannot skip backwards.");
             }
-        } 
-        else
-        {
-            System.out.println("Playlist is empty. Cannot skip.");
+        } else {
+            System.out.println("Playlist is empty. Cannot skip backwards.");
         }
     }
 
@@ -240,11 +237,12 @@ public class Songs
         SongPlayer songPlayer = new SongPlayer();
 
         //This will play the playlist
-        //songPlayer.playPlaylist(playlist);
+        songPlayer.playPlaylist(playlist);
 
         //This will pause, skip, stop the songs
         //songPlayer.pause();
-        //songPlayer.skip();
+        songPlayer.skipf();
+        //songPlayer.skipb();
         //songPlayer.stop();
     }
 }
