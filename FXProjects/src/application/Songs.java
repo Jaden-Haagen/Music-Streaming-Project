@@ -120,10 +120,10 @@ class Playlist
 //The SongPlayer class simulates playing songs from a playlist
 class SongPlayer
 {
-    static List<Song> playlist;
-    private static int currentSongIndex;
-    static boolean isPlaying;
-    private Song currentSong;
+    public static List<Song> playlist;
+    public static int currentSongIndex;
+    public static boolean isPlaying;
+    public Song currentSong;
 
     public SongPlayer() 
     {
@@ -143,6 +143,7 @@ class SongPlayer
             return null;
         }
     }
+    
     //This will play the song
     public static void play(Song song)
     {
