@@ -9,13 +9,13 @@ public abstract class account {
 	public String name;
 	//a boolean containing whether the user is a paid or free user
 	//if they are paid it will be true, otherwise it will be false
-	protected boolean subType;
+	protected static boolean subType;
 	//a String array that acts a playlist
 	public String[] playList;
 	
 	//no arg constructor
 	public account() {
-		name = "";
+		name = "Test User 1";
 		subType = false;
 	}
 	

@@ -33,7 +33,7 @@ public class FreeUser extends account implements user{
 	}
 	
 	//this will turn your subscritpion into a paidtype
-	public void cancelSub() {
+	public static void cancelSub() {
 		subType = true;
 		
 	}

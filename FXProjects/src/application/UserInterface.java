@@ -21,6 +21,10 @@ public class UserInterface extends Application{
 	Button playPauseB, skipFB, skipBB;
 	//Buttons for profile
 	Button subB, unsubB;
+	//Text variables
+	Text subT = new Text();
+	Text songT = new Text();
+	//String nameSong;
 	//Variables for scene, column, and row sizes
 	int WINDOWSIZE = 400;
 	int SCENESIZE = 400;
@@ -53,6 +57,11 @@ public class UserInterface extends Application{
 		Text pNameT = new Text();
 		pNameT.setText("Test User");
 		pNameT.setTextAlignment(TextAlignment.CENTER);
+		//Text to tell the user they are subscribed or not
+		subT.setText("You are not subscribed");
+		subT.setTextAlignment(TextAlignment.CENTER);
+		//Text to display the song and artist
+		songT.setText("");
 		
 		//column and Row sizing for the scenes
 		ColumnConstraints c1 = new ColumnConstraints();
@@ -101,7 +110,8 @@ public class UserInterface extends Application{
 		//Layout for the profile page
 		GridPane layoutP = new GridPane();
 		//adds elements to specific spots in the grid
-		layoutP.add(pNameT, 1, 1);
+		layoutP.add(pNameT, 1, 0, 2, 1);
+		layoutP.add(subT, 1, 1, 2, 1);
 		layoutP.add(mainMenuPB, 0, 0);
 		layoutP.add(subB, 1, 2);
 		layoutP.add(unsubB, 2, 2);
@@ -119,7 +129,6 @@ public class UserInterface extends Application{
 		layoutP.setGridLinesVisible(true);
 		layoutS.setGridLinesVisible(true);
 		*/
-		
 		//Creates the main scene
 		mainPage = new Scene(layoutM, SCENESIZE, SCENESIZE);
 		//creates the music player scene
@@ -144,7 +153,10 @@ public class UserInterface extends Application{
 		musicB = new Button("Play Music");
 		musicB.setMaxWidth(Double.MAX_VALUE);
 		//Sets the functions to be called when the button is pressed
-		musicB.setOnAction(e -> window.setScene(playSongs));
+		musicB.setOnAction(e -> {
+			window.setScene(playSongs);
+			Songs.main(null);
+		});
 		
 		//Button for returning to the main menu
 		mainMenuSB = new Button("Main Menu");
@@ -160,25 +172,50 @@ public class UserInterface extends Application{
 		playPauseB = new Button("Play/Pause");
 		playPauseB.setMaxWidth(Double.MAX_VALUE);
 		//Sets the functions to be called when the button is pressed
-		playPauseB.setOnAction(e -> System.out.println("Play/Pause"));
+		playPauseB.setOnAction(e -> {
+			if(SongPlayer.isPlaying) {
+				SongPlayer.pause();
+				//nameSong = Playlist.getName();
+			}else {
+				SongPlayer.play(null);
+			}
+		});
 		skipFB = new Button(">|");
 		skipFB.setMaxWidth(Double.MAX_VALUE);
 		//Sets the functions to be called when the button is pressed
-		skipFB.setOnAction(e -> System.out.println("Next Song"));
+		skipFB.setOnAction(e -> {
+			SongPlayer.skipf();
+		});
 		skipBB = new Button("|<");
 		skipBB.setMaxWidth(Double.MAX_VALUE);
 		//Sets the functions to be called when the button is pressed
-		skipBB.setOnAction(e -> System.out.println("Previous Song"));
+		skipBB.setOnAction(e -> {
+			SongPlayer.skipb();
+		});
 		
 		//Buttons for profile page
 		subB = new Button("Subscribe");
 		subB.setMaxWidth(Double.MAX_VALUE);
 		//Sets the functions to be called when the button is pressed
-		subB.setOnAction(e -> System.out.println("You are subscribed!"));
+		subB.setOnAction(e -> {
+			if(!account.subType) {
+				FreeUser.cancelSub();
+				subT.setText("You are now subscribed");
+			}else {
+				subT.setText("You are already subscribed");
+			}
+		});
 		unsubB = new Button("Unsubscribe");
 		unsubB.setMaxWidth(Double.MAX_VALUE);
 		//Sets the functions to be called when the button is pressed
-		unsubB.setOnAction(e -> System.out.println("You are unsubscribed!"));
+		unsubB.setOnAction(e -> {
+			if(account.subType) {
+				PaidUser.cancelSub();
+				subT.setText("You are now unsubscribed");
+			}else {
+				subT.setText("You are already unsubscribed");
+			}
+		});
 	}
 	
 	

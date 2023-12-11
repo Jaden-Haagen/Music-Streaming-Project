@@ -21,8 +21,8 @@ public class PaidUser extends account implements user{
 	public void skip() {
 	}
 	
-	//this will turn your subscritpion into a freetype
-	public void cancelSub() {
+	//this will turn your subscription into a freetype
+	public static void cancelSub() {
 		subType = false;
 	}
 

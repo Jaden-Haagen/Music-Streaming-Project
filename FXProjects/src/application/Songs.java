@@ -1,10 +1,12 @@
+package application;
+
 import java.util.ArrayList;
 import java.util.List;
 
-//This Song class represents an individual song
+// Song class represents an individual song
 class Song 
 {
-	//private variables for to get the Strings of title, artist, genre, and num of duration
+	//private variables for title, artist, genre, duration
     private String title;
     private String artist;
     private String genre;
@@ -50,8 +52,7 @@ class Song
 
     //Equals and hashCode will determine if a song is already in the playlist
     @Override
-    public boolean equals(Object obj) 
-    {
+    public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Song song = (Song) obj;
@@ -69,19 +70,19 @@ class Song
 // Playlist class represents a collection of songs
 class Playlist 
 {
-    private String name;
-    private List<Song> songs;
+    private static String name;
+    List<Song> songs;
     private String createdBy;
 
     public Playlist(String name, String createdBy) 
     {
-        this.name = name;
+        Playlist.name = name;
         this.createdBy = createdBy;
         songs = new ArrayList<>();
     }
 
     //This will get the name of the playlist
-    public String getName() 
+    public static String getName() 
     {
         return name;
     }
@@ -119,28 +120,25 @@ class Playlist
 //The SongPlayer class simulates playing songs from a playlist
 class SongPlayer
 {
-	//This variable is for the song playlist
-    private List<Song> playlist;
-    //This variable will keep track of the current song playing
-    private int currentSongIndex;
-    //This variable is a boolean if a song is playing or not
-    private boolean isPlaying;
+    static List<Song> playlist;
+    private static int currentSongIndex;
+    static boolean isPlaying;
 
     public SongPlayer() 
     {
-        this.playlist = new ArrayList<>(); // Using ArrayList to allow modifications
-        this.currentSongIndex = 0;
+        SongPlayer.playlist = new ArrayList<>(); // Using ArrayList to allow modifications
+        SongPlayer.currentSongIndex = 0;
     }
 
     //This will play the song
-    public void play(Song song)
+    public static void play(Song song)
     {
         isPlaying = true;
         System.out.println("Now playing: " + song);
     }
 
     //This will pause the song
-    public void pause() 
+    public static void pause() 
     {
         if (isPlaying) 
         {
@@ -153,8 +151,8 @@ class SongPlayer
         }
     }
 
-    //This will skip the song forward
-    public void skipf() 
+    //This will skip forwards
+    public static void skipf() 
     {
         if (!playlist.isEmpty()) 
         {
@@ -176,36 +174,36 @@ class SongPlayer
     }
     
     //This will skip backwards
-    public void skipb() 
+    public static void skipb() 
     {
-    	if (!playlist.isEmpty()) 
-    	{
+        if (!playlist.isEmpty()) 
+        {
             if (isPlaying) 
             {
-                currentSongIndex = (currentSongIndex - 1 + playlist.size()) % playlist.size();
+                System.out.println("Skipping: " + playlist.get(currentSongIndex));
+                currentSongIndex = (currentSongIndex - 1) % playlist.size();
                 play(playlist.get(currentSongIndex));
             } 
             else 
             {
-                System.out.println("Not currently playing. Cannot skip backwards.");
+                System.out.println("Not currently playing. Cannot skip.");
             }
-        } else {
-            System.out.println("Playlist is empty. Cannot skip backwards.");
+        } 
+        else
+        {
+            System.out.println("Playlist is empty. Cannot skip.");
         }
     }
 
-    //This will play the playlist and start playing the first song in queue
     public void playPlaylist(Playlist playlist) 
     {
-        this.playlist = playlist.getSongs();
+        SongPlayer.playlist = playlist.getSongs();
         currentSongIndex = 0;
 
-        //This will check if the playlist has 
-        if (!this.playlist.isEmpty()) 
+        if (!SongPlayer.playlist.isEmpty()) 
         {
-            play(this.playlist.get(currentSongIndex));
+            play(SongPlayer.playlist.get(currentSongIndex));
         } 
-        //This will print if there are no songs in the playlist
         else 
         {
             System.out.println("Playlist is empty. Cannot play.");
@@ -215,7 +213,7 @@ class SongPlayer
 
 }
 
-//Creates songs and makes a playlist with them
+// Example usage
 public class Songs
 {
     public static void main(String[] args) 
@@ -241,8 +239,7 @@ public class Songs
 
         //This will pause, skip, stop the songs
         //songPlayer.pause();
-        songPlayer.skipf();
-        //songPlayer.skipb();
+        //songPlayer.skip();
         //songPlayer.stop();
     }
 }
