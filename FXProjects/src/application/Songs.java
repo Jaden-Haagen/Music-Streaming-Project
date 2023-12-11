@@ -1,7 +1,5 @@
 package application;
 
-package CS2365;
-
 import java.util.ArrayList;
 import java.util.List;
 
