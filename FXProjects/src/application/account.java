@@ -1,3 +1,5 @@
+package application;
+
 /**
  * The class is used to cover the variables that each user
  * will share, as well as constructors to establish an account

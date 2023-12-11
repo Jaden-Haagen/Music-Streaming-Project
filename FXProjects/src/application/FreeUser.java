@@ -1,3 +1,5 @@
+package application;
+
 /**
  * the free user is a person that isnt paying a subscription fee and thus
  * will only have a limited number of skips and will have a list of ads assigned 

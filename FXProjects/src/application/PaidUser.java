@@ -1,3 +1,5 @@
+package application;
+
 /**
  * This is the paid user account in which they wont have restrictions on skips and 
  * wont be subjugated to ads. Though they will have the option to cancel their subscription

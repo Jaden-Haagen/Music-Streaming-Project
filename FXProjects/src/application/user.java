@@ -1,3 +1,5 @@
+package application;
+
 /**
  * This is an interface that will defy the functionality of a user
  * 
@@ -21,7 +23,5 @@ public interface user {
 	
 	//this will allow a user to skip a song in a playlist
 	abstract void skip();
-	
-	
 
 }

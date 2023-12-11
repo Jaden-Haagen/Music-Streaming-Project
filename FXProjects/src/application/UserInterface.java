@@ -1,21 +1,12 @@
 package application;
 //import all the necessary packages
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.HPos;
 import javafx.geometry.Pos;
-import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
@@ -62,6 +53,7 @@ public class UserInterface extends Application{
 		Text pNameT = new Text();
 		pNameT.setText("Test User");
 		pNameT.setTextAlignment(TextAlignment.CENTER);
+		
 		//column and Row sizing for the scenes
 		ColumnConstraints c1 = new ColumnConstraints();
 	    c1.setPercentWidth(COLUMNPERCENT);
@@ -153,6 +145,7 @@ public class UserInterface extends Application{
 		musicB.setMaxWidth(Double.MAX_VALUE);
 		//Sets the functions to be called when the button is pressed
 		musicB.setOnAction(e -> window.setScene(playSongs));
+		
 		//Button for returning to the main menu
 		mainMenuSB = new Button("Main Menu");
 		mainMenuSB.setMaxWidth(Double.MAX_VALUE);
@@ -176,6 +169,7 @@ public class UserInterface extends Application{
 		skipBB.setMaxWidth(Double.MAX_VALUE);
 		//Sets the functions to be called when the button is pressed
 		skipBB.setOnAction(e -> System.out.println("Previous Song"));
+		
 		//Buttons for profile page
 		subB = new Button("Subscribe");
 		subB.setMaxWidth(Double.MAX_VALUE);
