@@ -11,4 +11,7 @@ The Expectations from your project to score well are as follows:
 
 #Running the program
 
-To run the program you currently need to call the UserInterface file located in src/application/UserInterface.java
+
+-To run the program you currently need to call the UserInterface file located in src/application/UserInterface.java
+-Make sure your JavaFX is configured correctly
+-Click run on the UserInterface.java with all the the other application files in your IDE
