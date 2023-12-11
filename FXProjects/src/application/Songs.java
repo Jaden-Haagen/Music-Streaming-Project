@@ -6,15 +6,11 @@ import java.util.List;
 // Song class represents an individual song
 class Song 
 {
-	//private variables for title, artist, genre, duration
+    //private variables for title, artist, genre, duration
     private String title;
     private String artist;
     private String genre;
     private int duration;
-    
-    public Song() {
-    	
-    }
     
     public Song(String title, String artist, String genre, int duration) 
     {
@@ -74,8 +70,11 @@ class Song
 // Playlist class represents a collection of songs
 class Playlist 
 {
+    //Declaring a String for name
     private static String name;
+    //A list for the songs to be inputted in
     List<Song> songs;
+    //a String for createdBy
     private String createdBy;
 
     public Playlist(String name, String createdBy) 
@@ -97,7 +96,7 @@ class Playlist
         return createdBy;
     }
 
-    //This wilil add a song to the playlist
+    //This will add a song to the playlist
     public void addSong(Song song) 
     {
     	//This will throw an exception if a song is already in the playlist
@@ -134,9 +133,11 @@ class SongPlayer
         SongPlayer.playlist = new ArrayList<>(); // Using ArrayList to allow modifications
         SongPlayer.currentSongIndex = 0;
     }
-    
+
+    //this will get the current song
     public static Song getCurrentSong() 
     {
+	//if else statement for if the current song is playing
         if (isPlaying) 
         {
             return currentSong;
@@ -151,6 +152,7 @@ class SongPlayer
     //This will play the song
     public static void play(Song song)
     {
+	//This is a boolean if isPlaying is true or false
         isPlaying = true;
         System.out.println("Now playing: " + song);
     }
@@ -172,8 +174,10 @@ class SongPlayer
     //This will skip forwards
     public static void skipf() 
     {
+	//if else statement to determine if the playlist empty
         if (!playlist.isEmpty()) 
         {
+	    //if else statement for skipping the current song
             if (isPlaying) 
             {
                 System.out.println("Skipping: " + playlist.get(currentSongIndex));
@@ -191,7 +195,7 @@ class SongPlayer
         }
     }
     
-    //This will skip backwards
+    //This will skip backwards; same thing as skipf but backwards
     public static void skipb() 
     {
         if (!playlist.isEmpty()) 
@@ -213,11 +217,12 @@ class SongPlayer
         }
     }
 
+    //This will play the songs in the playlist
     public void playPlaylist(Playlist playlist) 
     {
         SongPlayer.playlist = playlist.getSongs();
         currentSongIndex = 0;
-
+	//if else statement for an empty playlist
         if (!SongPlayer.playlist.isEmpty()) 
         {
             play(SongPlayer.playlist.get(currentSongIndex));
@@ -231,7 +236,7 @@ class SongPlayer
 
 }
 
-// Example usage
+// Song and Main driver code
 public class Songs
 {
     public static void main(String[] args) 
