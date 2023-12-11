@@ -9,9 +9,8 @@ The Expectations from your project to score well are as follows:
 -JAVAFX(Optional)
 -Report with Introduction, UML diagrams, Test result, Conclusion, and very Important Source codes.
 
-#Running the program
+#Running the program within windows 10/11, eclipse IDE version 4.3, Java JDK 21.
 
-
+-Make sure your JavaFX is configured correctly, within your configured
 -To run the program you currently need to call the UserInterface file located in src/application/UserInterface.java
--Make sure your JavaFX is configured correctly
 -Click run on the UserInterface.java with all the the other application files in your IDE
