@@ -11,6 +11,8 @@ The Expectations from your project to score well are as follows:
 
 #Running the program within windows 10/11, eclipse IDE version 4.3, Java JDK 21.
 
--Make sure your JavaFX is configured correctly, within your configured
+-Make sure your JavaFX is configured correctly, within your configured JavaFX download and upload our files()
+
 -To run the program you currently need to call the UserInterface file located in src/application/UserInterface.java
+
 -Click run on the UserInterface.java with all the the other application files in your IDE
