@@ -11,7 +11,7 @@ The Expectations from your project to score well are as follows:
 
 #Running the program within windows 10/11, eclipse IDE version 4.3, Java JDK 21.
 
--Make sure your JavaFX is configured correctly, within the eclipse IDE from there download our code and add it to the correct eclipse workspace.
+-Make sure your JavaFX is configured correctly, within the eclipse IDE, from there download our code and add it to the correct eclipse workspace.
 
 -open our project within eclipse
 
