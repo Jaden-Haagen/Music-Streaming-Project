@@ -9,7 +9,7 @@ public interface user {
 	abstract void setName(String name);
 	//this will wipe all of the information within an account
 	void deleteAccount();
-	//allows you to put a name of a song into a playlist/array, this is similar to method overload do to having a similar method in a different class
+	//allows you to put a name of a song into a playlist/array
 	public static String[] addToPlaylist(String[] array, String song) {
 		//here we create a array that is one size greater than the original
 		String[] newArray = new String[array.length + 1];

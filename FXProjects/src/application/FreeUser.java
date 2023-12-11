@@ -17,6 +17,7 @@ public class FreeUser extends account implements user{
 	private int availableSkips = 3;
 	//An array of strings that contain the various ads that will play
 	//for a free user
+	
 	private String[] ads = {"toyota","snickers","insurance"}; 
 	
 	//this method sets the username
@@ -24,6 +25,12 @@ public class FreeUser extends account implements user{
 		this.name = name;
 	}
 
+	
+	@Override
+	public void skip() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	//this will turn your subscritpion into a paidtype
 	public static void cancelSub() {

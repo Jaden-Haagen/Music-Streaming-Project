@@ -158,7 +158,7 @@ public class UserInterface extends Application{
 		musicB.setOnAction(e -> {
 			window.setScene(playSongs);
 			Songs.main(null);
-			songT.setText("");
+			songT.setText("Playing: " + SongPlayer.playlist.get(SongPlayer.currentSongIndex).getTitle() + " by: " + SongPlayer.playlist.get(SongPlayer.currentSongIndex).getArtist());
 		});
 		
 		//Button for returning to the main menu
@@ -179,26 +179,42 @@ public class UserInterface extends Application{
 		playPauseB.setOnAction(e -> {
 			if(SongPlayer.isPlaying) {
 				SongPlayer.pause();
-				s1 = SongPlayer.getCurrentSong();
-				songT.setText("");
+				songT.setText("Paused: " + SongPlayer.playlist.get(SongPlayer.currentSongIndex).getTitle() + " by: " + SongPlayer.playlist.get(SongPlayer.currentSongIndex).getArtist());
 			}else {
-				SongPlayer.play(s1);
-				songT.setText("");
+				SongPlayer.play(SongPlayer.playlist.get(SongPlayer.currentSongIndex));
+				songT.setText("Playing: " + SongPlayer.playlist.get(SongPlayer.currentSongIndex).getTitle() + " by: " + SongPlayer.playlist.get(SongPlayer.currentSongIndex).getArtist());
 			}
 		});
 		skipFB = new Button(">|");
 		skipFB.setMaxWidth(Double.MAX_VALUE);
 		//Sets the functions to be called when the button is pressed
 		skipFB.setOnAction(e -> {
-			SongPlayer.skipf();
-			songT.setText("");
+			if(!account.subType && account.numSkips > 0) {
+				account.numSkips--;
+			}
+			if(account.numSkips > 0) {
+				SongPlayer.skipf();
+				songT.setText("Playing: " + SongPlayer.playlist.get(SongPlayer.currentSongIndex).getTitle() + " by: " + SongPlayer.playlist.get(SongPlayer.currentSongIndex).getArtist());
+			}
 		});
 		skipBB = new Button("|<");
 		skipBB.setMaxWidth(Double.MAX_VALUE);
 		//Sets the functions to be called when the button is pressed
 		skipBB.setOnAction(e -> {
-			SongPlayer.skipb();
-			songT.setText("");
+			if(!account.subType && account.numSkips > 0) {
+				account.numSkips--;
+			}
+			if(account.numSkips > 0) {
+				if(SongPlayer.currentSongIndex == 0) {
+					SongPlayer.currentSongIndex = SongPlayer.playlist.size()-2;
+					SongPlayer.skipf();
+					songT.setText("Playing: " + SongPlayer.playlist.get(SongPlayer.playlist.size()-1).getTitle() + " by: " + SongPlayer.playlist.get(SongPlayer.playlist.size()-1).getArtist());
+				}else {
+					//SongPlayer.currentSongIndex = SongPlayer.playlist.size()-1;
+					SongPlayer.skipb();
+					songT.setText("Playing: " + SongPlayer.playlist.get(SongPlayer.currentSongIndex).getTitle() + " by: " + SongPlayer.playlist.get(SongPlayer.currentSongIndex).getArtist());
+				}
+			}
 		});
 		
 		//Buttons for profile page
@@ -208,6 +224,7 @@ public class UserInterface extends Application{
 		subB.setOnAction(e -> {
 			if(!account.subType) {
 				FreeUser.cancelSub();
+				account.numSkips = 4;
 				subT.setText("You are now subscribed");
 			}else {
 				subT.setText("You are already subscribed");

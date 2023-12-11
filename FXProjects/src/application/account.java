@@ -12,6 +12,7 @@ public abstract class account {
 	protected static boolean subType;
 	//a String array that acts a playlist
 	public String[] playList;
+	public static int numSkips = 4;
 	
 	//no arg constructor
 	public account() {
